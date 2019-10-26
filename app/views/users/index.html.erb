@@ -1,0 +1,19 @@
+<h1>Users</h1>
+<table>
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+	<th>Link</th>
+	<% @users.each do |user| %>
+	<tbody>
+        <tr>
+			<td><%= attachment_image_tag user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", size:'30x30' %></td>
+			<td><%= user.name %></td>
+			<td><%= link_to("show","/users/#{user.id}") %></td>
+	    </tr>
+    </tbody>
+	<%end%>
+</table>
+
+<%= render partial: 'layouts/sidebar', locals:{ user: @user, newbook: @newbook } %>

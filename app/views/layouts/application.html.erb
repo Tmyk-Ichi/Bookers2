@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <nav>
+      <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+      <% if user_signed_in? %>
+        <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+        <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+        Logged in as <strong><%= current_user.name %></strong>.
+        <%= link_to 'Home', user_path(current_user.id) %> |
+        <%= link_to 'Users', "/users" %> |
+        <%= link_to 'Books', books_path %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Home", root_path %>
+        |
+        <%= link_to "About", home_about_path %>|
+        <%= link_to "Sign up", new_user_registration_path %>|
+        <%= link_to "Log in", new_user_session_path %>
+      <% end %>
+    </nav>
+  </header>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
+  </body>
+</html>
