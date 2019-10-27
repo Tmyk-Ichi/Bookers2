@@ -1,23 +1,25 @@
-<h2>Books</h2>
-	<table >
-	<thead>
-		<tr>
-		  <th>Title</th>
-		  <th>Opinion</th>
-		  <th></th>
-		</tr>
-	</thead>
-	    <tr>
-	<% @books.each do |book| %>
-	<tbody>
-		  <td><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %>
-		  	<!--%= link_to ,book.user, user_path(user.id) %-->
-		  </td>
-	      <td><%= link_to book.title, book_path(book.id) %></td>
-		  <td><%= book.body%></td>
-	</tbody>
-		</tr>
-	<% end %>
-	</table>
-
 <%= render partial: 'layouts/sidebar', locals:{ user: @user, newbook: @newbook } %>
+
+
+<div class="col-xs-9">
+	<h2>Books</h2>
+		<table class="table" >
+		<thead>
+			<tr>
+				<th></th>
+			  <th>Title</th>
+			  <th>Opinion</th>
+			</tr>
+		</thead>
+		    <tr>
+		<% @books.each do |book| %>
+		<tbody>
+			  <td><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'50x50' %>
+			  	<!--%= link_to ,book.user, user_path(user.id) %-->
+			  </td>
+		      <td><%= link_to book.title, book_path(book.id) %></td>
+			  <td><%= book.body%></td>
+		</tbody>
+			</tr>
+		<% end %>
+		</table>

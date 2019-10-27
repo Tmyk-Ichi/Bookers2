@@ -11,32 +11,46 @@
 
   <body>
     <header>
-    <nav>
-      <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <span class="navbar-brand">Bookers</span>
+        </div>
+      <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
-        <!-- *_path はUserモデルを作成したときに、
-        deviseにより自動で作成されてますので、rake routesで確認できます -->
-        Logged in as <strong><%= current_user.name %></strong>.
-        <%= link_to 'Home', user_path(current_user.id) %> |
-        <%= link_to 'Users', "/users" %> |
-        <%= link_to 'Books', books_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <li><%= link_to ' Home', user_path(current_user.id),:class => "glyphicon glyphicon-home" %></li>
+          <li><%= link_to ' Users', "/users", :class => "glyphicon glyphicon-user" %></li>
+          <li><%= link_to ' Books', books_path, :class => "glyphicon glyphicon-book" %></li>
+          <li><%= link_to " Logout", destroy_user_session_path, method: :delete, :class => "glyphicon glyphicon-log-out" %></li>
       <% else %>
-        <%= link_to "Home", root_path %>
-        |
-        <%= link_to "About", home_about_path %>|
-        <%= link_to "Sign up", new_user_registration_path %>|
-        <%= link_to "Log in", new_user_session_path %>
+          <li><%= link_to " Home", root_path, :class => "glyphicon glyphicon-home" %></li>
+          <li><%= link_to " About", home_about_path, :class =>"glyphicon glyphicon-link" %></li>
+          <li><%= link_to " Sign up", new_user_registration_path, :class => "glyphicon glyphicon-edit" %></li>
+          <li><%= link_to " Log in", new_user_session_path, :class => "glyphicon glyphicon-log-in" %></li>
       <% end %>
+      </ul>
+    </div>
     </nav>
   </header>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<div class="container">
+  <div class ="row">
+  <%= notice %>
+  <%= alert %>
     <%= yield %>
+  </div>
+</div>
+
+
     <footer>
-      <p>CopyRight Infratop.inc</p>
+      <div class ="container">
+        <div class ="row">
+          <div class="col-xs-3 col-xs-offset-9">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+
     </footer>
   </body>
 </html>
