@@ -115,7 +115,7 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
-    faker (2.0)
+    faker (2.0.0)
       i18n (>= 0.7)
     ffi (1.11.1)
     globalid (0.4.2)
@@ -157,6 +157,7 @@ GEM
     minitest (5.12.2)
     msgpack (1.3.1)
     mustermann (1.0.3)
+    mysql2 (0.5.3)
     netrc (0.11.0)
     nio4r (2.5.2)
     nokogiri (1.10.4)
@@ -332,6 +333,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  mysql2
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails-controller-testing
@@ -351,7 +353,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.5.5p157
+   ruby 2.5.7p206
 
 BUNDLED WITH
    2.0.2
